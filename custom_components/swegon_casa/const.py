@@ -3,7 +3,7 @@
 from enum import StrEnum
 from typing import Any
 
-DOMAIN = "schar_swegon_casa_smart_access"
+DOMAIN = "swegon_casa_smart_access"
 
 ID_TEMPERATURE_SUPPLY = "17"
 ID_TEMPERATURE_ROOM = "18"

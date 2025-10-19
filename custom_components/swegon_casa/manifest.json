@@ -1,5 +1,5 @@
 {
-  "domain": "schar_swegon_casa_smart_access",
+  "domain": "swegon_casa_smart_access",
   "name": "Swegon Casa Smart Access",
   "codeowners": ["@TMschar"],
   "config_flow": true,
