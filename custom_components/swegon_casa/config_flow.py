@@ -24,7 +24,7 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
 CONFIG_SCHEMA = vol.Schema({DOMAIN: vol.Schema({})}, extra=vol.ALLOW_EXTRA)
 
 
-class SwegonCasaConfigFlow(config_entries.ConfigFlow):
+class SwegonCasaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Swegon Casa."""
 
     domain = DOMAIN
