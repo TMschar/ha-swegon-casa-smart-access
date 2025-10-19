@@ -9,6 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .client import SwegonCasaClient
+from .config_flow import SwegonCasaConfigFlow
 from .const import DOMAIN
 
 _LOGGER: logging.Logger = logging.getLogger(__name__)

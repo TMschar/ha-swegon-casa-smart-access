@@ -5,9 +5,9 @@
         "title": "Connect to Swegon Casa Smart Access Module",
         "description": "Enter your Swegon Casa credentials",
         "data": {
+          "host": "Host (IP or FQDN to Smart Access Module on your Network)",
           "username": "Email",
-          "password": "Password",
-          "host": "Host (IP or FQDN to Smart Access Module on your Network)"
+          "password": "Password"
         }
       }
     },
