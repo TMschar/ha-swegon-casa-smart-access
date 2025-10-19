@@ -1,0 +1,112 @@
+[project]
+name = "ha-swegon-casa-smart-access"
+version = "1.0.0"
+description = "Home Assistant integration for Swegon Casa Smart Access Module"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Simon Arledal (aka schar, tmschar)", email = "git@forskningochutveckling.se"}
+]
+keywords = ["home-assistant", "swegon", "casa", "hvac", "air-handling"]
+classifiers = [
+    "Topic :: Home Automation",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "aiohttp>=3.8.0",
+    "websockets>=11.0",
+    "homeassistant>=2024.1.0",
+    "python-dotenv>=1.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.1.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0",
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.urls]
+Repository = "https://github.com/TMschar/ha-swegon-casa-smart-access"
+Issues = "https://github.com/TMschar/ha-swegon-casa-smart-access/issues"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort
+    "N",      # pep8-naming
+    "UP",     # pyupgrade
+    "RUF",    # Ruff-specific rules
+]
+ignore = [
+    "E501",   # line-length (handled by black)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["custom_components.swegon_casa"]
+
+[tool.mypy]
+python_version = "3.13"
+check_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+strict_equality = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_return_any = true
+
+[[tool.mypy.overrides]]
+module = "homeassistant.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "custom_components.swegon_casa.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "websockets.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "voluptuous"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "--cov=custom_components.swegon_casa --cov-report=term-missing"

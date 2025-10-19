@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install HACS validate
+      run: pip install homeassistant
+
+    - name: Validate manifest
+      run: python -m homeassistant.scripts.translations validate custom_components/swegon_casa
+
+    - name: Validate config flow
+      run: python -c "from custom_components.swegon_casa.config_flow import SwegonConfigFlow; print('✓ Config flow valid')"
+      continue-on-error: true

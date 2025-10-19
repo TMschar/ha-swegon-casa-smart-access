@@ -1,0 +1,19 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Swegon Casa Smart Access Module",
+        "description": "Enter your Swegon Casa credentials",
+        "data": {
+          "username": "Email",
+          "password": "Password",
+          "host": "Host (IP or FQDN to Smart Access Module on your Network)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid credentials",
+      "no_devices": "No devices found"
+    }
+  }
+}
